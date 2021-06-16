@@ -11,34 +11,27 @@ export default {
         }
     },
     data() {
-        const classesMap = {
-            active: 'primary',
-            cancelled: 'danger',
-            done: 'primary',
-            pending: 'warning',
-        }
-
-        const textMap = {
-            active: 'Активен',
-            cancelled: 'Отменен',
-            done: 'Завершен',
-            pending: 'Выполняется',
-        }
-
-        const className = classesMap[this.type];
-        const text = textMap[this.type];
-
         return {
-            className,
-            text,
-            classesMap,
-            textMap,
+            classesMap: {
+                active: 'primary',
+                cancelled: 'danger',
+                done: 'primary',
+                pending: 'warning'
+            },
+            textMap: {
+                active: 'Активен',
+                cancelled: 'Отменен',
+                done: 'Завершен',
+                pending: 'Выполняется'
+            }
         }
     },
-    watch: {
-        type(val) {
-            this.className = this.classesMap[val];
-            this.text = this.textMap[val];
+    computed: {
+        className() {
+            return this.classesMap[this.type];
+        },
+        text() {
+            return this.textMap[this.type];
         }
     }
 }

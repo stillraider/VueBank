@@ -39,12 +39,13 @@ import { useRequestForm } from '../../use/request-form'
 export default {
     emits: ['created'],
     data() {
-        const submit = async val => {
+        return useRequestForm(this.submit)
+    },
+    methods: {
+        async submit(val) {
             await this.$store.dispatch('request/create', val);
             this.$emit('created');
         }
-
-        return useRequestForm(submit)
     }
 }
 </script>

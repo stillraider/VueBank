@@ -26,9 +26,9 @@ export default {
         }
     },
     data() {
-        const heading = document.title = `${this.title} | Клон Банка`;
-
-        return { heading }
+        return { 
+            heading: document.title = `${this.title} | Клон Банка`
+        }
     }
 }
 </script>

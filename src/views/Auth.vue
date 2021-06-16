@@ -24,15 +24,21 @@ import { error } from '../utils/error'
 
 export default {
     data() {
-        if (this.$route.query.message) {
-            this.$store.dispatch('setMessage', {
-                value: error(this.$route.query.message),
-                type: 'warning'
-            });
+        return {
+            ...useLoginForm(),
+            warning: this.auth()
         }
-
-        return useLoginForm()
     },
+    methods: {
+        auth() {
+            if (this.$route.query.message) {
+                this.$store.dispatch('setMessage', {
+                    value: error(this.$route.query.message),
+                    type: 'warning'
+                });
+            }
+        }
+    }
 }
 </script>
 

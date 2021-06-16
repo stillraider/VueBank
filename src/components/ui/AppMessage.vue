@@ -11,17 +11,13 @@ import { useStore } from 'vuex'
 
 export default {
     data() {
-        const store = useStore();
-
-        const TITLE_MAP = {
-            primary: 'Успешно!',
-            danger: 'Ошибка!',
-            warning: 'Внимание!'
-        }
-
         return {
-            TITLE_MAP,
-            store
+            titleMap: {
+                primary: 'Успешно!',
+                danger: 'Ошибка!',
+                warning: 'Внимание!'
+            },
+            store: useStore()
         }
     },
     methods: {
@@ -34,7 +30,7 @@ export default {
             return this.store.getters.message;
         },
         title() {
-            return this.message.value ? this.TITLE_MAP[this.message.type] : '';
+            return this.message.value ? this.titleMap[this.message.type] : '';
         }
     }
 }
